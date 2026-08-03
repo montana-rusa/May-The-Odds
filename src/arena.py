@@ -1,6 +1,5 @@
 import pygame
 
-
 class Arena:
 
     def __init__(self, width, height):
@@ -9,9 +8,8 @@ class Arena:
         self.cannon_grid = [[0 for _ in range(width)] for _ in range(height)]
         self.tribute_grid = [[0 for _ in range(width)] for _ in range(height)]
 
-    def generate_map(self):
+    def generate_map(self, screen):
 
-        from main import screen
         ROWS, COLS = 5, 5
         CELL_SIZE = 28
         MARGIN = 4
@@ -26,6 +24,7 @@ class Arena:
                 x = 600 + col * (CELL_SIZE + MARGIN)
                 y = 44 + row * (CELL_SIZE + MARGIN)
                 age = 255 - ((3 - self.cannon_grid[row][col]) * 85)
+                
                 pygame.draw.rect(screen, (age, 100, age), (x, y, CELL_SIZE, CELL_SIZE))
 
     def new_cannon(self, x, y):
