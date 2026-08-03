@@ -7,6 +7,7 @@ class Arena:
         self.width = width
         self.height = height
         self.cannon_grid = [[0 for _ in range(width)] for _ in range(height)]
+        self.tribute_grid = [[0 for _ in range(width)] for _ in range(height)]
 
     def generate_map(self):
 
@@ -15,10 +16,16 @@ class Arena:
         CELL_SIZE = 28
         MARGIN = 4
 
+        # Some example values for testing purposes
+        self.cannon_grid[0][0] = 3
+        self.cannon_grid[0][1] = 2
+        self.cannon_grid[0][2] = 1
+
         for row in range(ROWS):
             for col in range(COLS):
-                x = 4 + col * (CELL_SIZE + MARGIN)
-                y = 4 + row * (CELL_SIZE + MARGIN)
-                pygame.draw.rect(screen, (255, 255, 255), (x, y, CELL_SIZE, CELL_SIZE))
+                x = 600 + col * (CELL_SIZE + MARGIN)
+                y = 44 + row * (CELL_SIZE + MARGIN)
+                age = 255 - ((3 - self.cannon_grid[row][col]) * 85)
+                pygame.draw.rect(screen, (age, 100, age), (x, y, CELL_SIZE, CELL_SIZE))
 
 
