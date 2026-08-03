@@ -28,4 +28,15 @@ class Arena:
                 age = 255 - ((3 - self.cannon_grid[row][col]) * 85)
                 pygame.draw.rect(screen, (age, 100, age), (x, y, CELL_SIZE, CELL_SIZE))
 
+    def new_cannon(self, x, y):
+        self.cannon_grid[x][y] = 3
+
+    def update_cannon_grid(self):
+        for i in range(self.height):
+            for j in range(self.width):
+                if self.cannon_grid[i][j] > 0:
+                    self.cannon_grid[i][j] -= 1
+
+    
+
 
