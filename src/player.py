@@ -26,22 +26,18 @@ class Player:
         pygame.draw.circle(screen, (255, 0, 0), (center_x, center_y), 10)
 
     def move(self, keys):
-        now = pygame.time.get_ticks()
-
-        if now < self.next_move_time:
-            return
-
-        old_position = self.position
-
         if keys[pygame.K_UP] and self.position[1] > 0:
             self.position = (self.position[0], self.position[1] - 1)
+            return True
         elif keys[pygame.K_DOWN] and self.position[1] < 4:
             self.position = (self.position[0], self.position[1] + 1)
+            return True
         elif keys[pygame.K_LEFT] and self.position[0] > 0:
             self.position = (self.position[0] - 1, self.position[1])
+            return True
         elif keys[pygame.K_RIGHT] and self.position[0] < 4:
             self.position = (self.position[0] + 1, self.position[1])
+            return True
+        return False
 
-        if self.position != old_position:
-            self.next_move_time = now + 250
-  
+       
